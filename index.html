@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline';
+             style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+             font-src 'self' https://fonts.gstatic.com;
+             img-src 'self' data:;
+             media-src *;
+             connect-src *;" />
+  <title>CAM Student Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== SPLASH SCREEN ===== -->
+  <div id="splash">
+    <div class="splash-inner">
+      <div class="splash-icon"><svg class="icon icon-2xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 5-10 5L2 8z"/><path d="M6 11v5c0 1.6 2.7 3 6 3s6-1.4 6-3v-5"/></svg></div>
+      <h1>CAM<span>Student</span>Hub</h1>
+      <p>Your Offline Campus Companion</p>
+      <div class="splash-loader"><span></span></div>
+    </div>
+  </div>
+
+  <!-- ===== APP WRAPPER ===== -->
+  <div id="app" class="hidden">
+
+    <!-- TOP HEADER -->
+    <header class="app-header">
+      <button class="menu-btn" id="menuToggle" aria-label="Menu"><svg class="icon icon-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg></button>
+      <div class="header-title" id="pageTitle">Home</div>
+      <div class="header-avatar" id="headerAvatar"><svg class="icon icon-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-4 3-6.3 7-6.3s7 2.3 7 6.3"/></svg></div>
+    </header>
+
+    <!-- SIDE DRAWER -->
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <nav class="side-drawer" id="sideDrawer">
+      <div class="drawer-profile">
+        <div class="drawer-avatar"><svg class="icon icon-2xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 5-10 5L2 8z"/><path d="M6 11v5c0 1.6 2.7 3 6 3s6-1.4 6-3v-5"/></svg></div>
+        <div class="drawer-name" id="drawerName">Student</div>
+        <div class="drawer-sub">CAM Student Hub</div>
+      </div>
+      <ul class="drawer-nav">
+        <li><a href="#" class="nav-link active" data-page="home"><svg class="icon icon-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11.2L12 4l8 7.2M6 10v9.5h5V14h2v5.5h5V10"/></svg> <span>Home</span></a></li>
+        <li><a href="#" class="nav-link" data-page="profile"><svg class="icon icon-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-4 3-6.3 7-6.3s7 2.3 7 6.3"/></svg> <span>My Profile</span></a></li>
+        <li><a href="#" class="nav-link" data-page="sos"><svg class="icon icon-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4.2l9 15.6H3z"/><line x1="12" y1="10" x2="12" y2="14.2"/><circle cx="12" cy="16.9" r="0.15" fill="currentColor" stroke="currentColor" stroke-width="1.6"/></svg> <span>SOS Emergency</span></a></li>
+        <li><a href="#" class="nav-link" data-page="places"><svg class="icon icon-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.5s7-7.4 7-12.3a7 7 0 10-14 0c0 4.9 7 12.3 7 12.3z"/><circle cx="12" cy="9.2" r="2.4"/></svg> <span>Places Guide</span></a></li>
+        <li><a href="#" class="nav-link" data-page="courses"><svg class="icon icon-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.2c-2-1.3-5-1.5-8-.7v12.7c3-.8 6-.6 8 .7 2-1.3 5-1.5 8-.7V5.5c-3-.8-6-.6-8 .7z"/><line x1="12" y1="6.2" x2="12" y2="18.9"/></svg> <span>Study Resources</span></a></li>
+        <li><a href="#" class="nav-link" data-page="agenda"><svg class="icon icon-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.2" y="5" width="17.6" height="15.8" rx="2"/><line x1="3.2" y1="9.8" x2="20.8" y2="9.8"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg> <span>Agenda / Tasks</span></a></li>
+        <li><a href="#" class="nav-link" data-page="contacts"><svg class="icon icon-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3h3l1.8 4.6-2.3 1.6a12.4 12.4 0 006.7 6.7l1.6-2.3L22 15.4v3c0 1.1-.9 2-2 2C11.6 20.4 3.6 12.4 3.6 4.9c0-1.1.9-2 2-2z"/></svg> <span>Contacts</span></a></li>
+        <li><a href="#" class="nav-link" data-page="travel"><svg class="icon icon-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="4.5" cy="19.5" r="1.6" fill="currentColor" stroke="none"/><circle cx="19.5" cy="4.5" r="1.6" fill="currentColor" stroke="none"/><path d="M4.5 19.5c0-6 3-9 7.5-9s7.5-3 7.5-6"/></svg> <span>Travel Safety Log</span></a></li>
+      </ul>
+    </nav>
+
+    <!-- ===== PAGES CONTAINER ===== -->
+    <main class="pages-container">
+
+      <!-- HOME PAGE -->
+      <section class="page active" id="page-home">
+        <div class="home-hero">
+          <div class="home-greeting" id="homeGreeting">Good Day!</div>
+          <div class="home-student-name" id="homeStudentName">Welcome, Student</div>
+          <div class="home-loc"><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.5s7-7.4 7-12.3a7 7 0 10-14 0c0 4.9 7 12.3 7 12.3z"/><circle cx="12" cy="9.2" r="2.4"/></svg> Yola, Adamawa — Nigeria</div>
+        </div>
+        <div class="sos-quick">
+          <button class="sos-quick-btn" id="homeSosBtn"><svg class="icon icon-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4.2l9 15.6H3z"/><line x1="12" y1="10" x2="12" y2="14.2"/><circle cx="12" cy="16.9" r="0.15" fill="currentColor" stroke="currentColor" stroke-width="1.6"/></svg> SOS EMERGENCY</button>
+        </div>
+        <div class="home-grid">
+          <div class="home-card" data-page="profile">
+            <span><svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-4 3-6.3 7-6.3s7 2.3 7 6.3"/></svg></span><p>Profile</p>
+          </div>
+          <div class="home-card" data-page="places">
+            <span><svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.5s7-7.4 7-12.3a7 7 0 10-14 0c0 4.9 7 12.3 7 12.3z"/><circle cx="12" cy="9.2" r="2.4"/></svg></span><p>Places</p>
+          </div>
+          <div class="home-card" data-page="courses">
+            <span><svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.2c-2-1.3-5-1.5-8-.7v12.7c3-.8 6-.6 8 .7 2-1.3 5-1.5 8-.7V5.5c-3-.8-6-.6-8 .7z"/><line x1="12" y1="6.2" x2="12" y2="18.9"/></svg></span><p>Courses</p>
+          </div>
+          <div class="home-card" data-page="agenda">
+            <span><svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.2" y="5" width="17.6" height="15.8" rx="2"/><line x1="3.2" y1="9.8" x2="20.8" y2="9.8"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg></span><p>Agenda</p>
+          </div>
+          <div class="home-card" data-page="contacts">
+            <span><svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3h3l1.8 4.6-2.3 1.6a12.4 12.4 0 006.7 6.7l1.6-2.3L22 15.4v3c0 1.1-.9 2-2 2C11.6 20.4 3.6 12.4 3.6 4.9c0-1.1.9-2 2-2z"/></svg></span><p>Contacts</p>
+          </div>
+          <div class="home-card" data-page="travel">
+            <span><svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="4.5" cy="19.5" r="1.6" fill="currentColor" stroke="none"/><circle cx="19.5" cy="4.5" r="1.6" fill="currentColor" stroke="none"/><path d="M4.5 19.5c0-6 3-9 7.5-9s7.5-3 7.5-6"/></svg></span><p>Travel Log</p>
+          </div>
+        </div>
+        <div class="home-tip">
+          <div class="tip-label"><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.2 18.4h5.6M10.1 21.3h3.8M12 3.2a6 6 0 00-3 11.2c.6.6 1 1.4 1 2.3h4c0-.9.4-1.7 1-2.3a6 6 0 00-3-11.2z"/></svg> Safety Tip</div>
+          <div class="tip-text" id="homeTip">Always share your location with a trusted contact before traveling at night.</div>
+        </div>
+      </section>
+
+      <!-- PROFILE PAGE -->
+      <section class="page" id="page-profile">
+        <div class="page-header">
+          <h2>My Profile</h2>
+          <p>Your personal information stored locally</p>
+        </div>
+        <div class="card form-card">
+          <div class="form-group">
+            <label for="profileName">Full Name</label>
+            <input type="text" id="profileName" placeholder="e.g. Amina Bello" />
+          </div>
+          <div class="form-group">
+            <label for="profilePhone">Phone Number</label>
+            <input type="tel" id="profilePhone" placeholder="e.g. 08012345678" />
+          </div>
+          <button class="btn btn-primary" id="saveProfileBtn"><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4.2h11l3 3v12.6H5z"/><rect x="8" y="4.2" width="7" height="4.6"/><rect x="8" y="13.6" width="8" height="6"/></svg> Save Profile</button>
+        </div>
+        <div class="card info-card" id="profileDisplay" style="display:none">
+          <div class="info-row"><span class="info-label">Name</span><span class="info-val" id="displayName">—</span></div>
+          <div class="info-row"><span class="info-label">Phone</span><span class="info-val" id="displayPhone">—</span></div>
+        </div>
+        <div class="toast" id="profileToast"></div>
+      </section>
+
+      <!-- SOS PAGE -->
+      <section class="page" id="page-sos">
+        <div class="page-header sos-header">
+          <h2><svg class="icon icon-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4.2l9 15.6H3z"/><line x1="12" y1="10" x2="12" y2="14.2"/><circle cx="12" cy="16.9" r="0.15" fill="currentColor" stroke="currentColor" stroke-width="1.6"/></svg> SOS Emergency</h2>
+          <p>Press the button to send your location via WhatsApp</p>
+        </div>
+        <div class="sos-center">
+          <button class="sos-big-btn" id="sosBtn">
+            <span class="sos-ring"></span>
+            <span class="sos-label">SOS</span>
+          </button>
+          <p class="sos-info">Tap to send your GPS location to emergency contacts</p>
+        </div>
+        <div class="card" id="sosStatus" style="display:none">
+          <div class="sos-status-text" id="sosStatusText"></div>
+          <button class="btn btn-ghost" id="stopAlarmBtn" style="display:none; margin-top:12px;"></button>
+        </div>
+        <div class="page-header" style="margin-top:20px">
+          <h3>SOS History</h3>
+        </div>
+        <div id="sosList" class="list-container"></div>
+      </section>
+
+      <!-- PLACES PAGE -->
+      <section class="page" id="page-places">
+        <div class="page-header">
+          <h2><svg class="icon icon-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.5s7-7.4 7-12.3a7 7 0 10-14 0c0 4.9 7 12.3 7 12.3z"/><circle cx="12" cy="9.2" r="2.4"/></svg> Places Guide</h2>
+          <p>Useful locations around Yola campus</p>
+        </div>
+        <!-- Filter -->
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="danger">Danger</button>
+          <button class="filter-btn" data-filter="restaurant">Food</button>
+          <button class="filter-btn" data-filter="housing"><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="9.5" height="18"/><rect x="15.2" y="9" width="4.8" height="12"/><line x1="7" y1="6.5" x2="7" y2="6.5"/><line x1="10.5" y1="6.5" x2="10.5" y2="6.5"/><line x1="7" y1="10" x2="7" y2="10"/><line x1="10.5" y1="10" x2="10.5" y2="10"/><line x1="7" y1="13.5" x2="7" y2="13.5"/><line x1="10.5" y1="13.5" x2="10.5" y2="13.5"/></svg> Housing</button>
+          <button class="filter-btn" data-filter="education"><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.2c-2-1.3-5-1.5-8-.7v12.7c3-.8 6-.6 8 .7 2-1.3 5-1.5 8-.7V5.5c-3-.8-6-.6-8 .7z"/><line x1="12" y1="6.2" x2="12" y2="18.9"/></svg> School</button>
+        </div>
+        <!-- Add form -->
+        <div class="card form-card collapsible" id="addPlaceSection">
+          <div class="collapsible-header" id="toggleAddPlace">
+            <span><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add New Place</span><span class="chevron"><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15.4 18 9"/></svg></span>
+          </div>
+          <div class="collapsible-body" id="addPlaceBody" style="display:none">
+            <div class="form-group">
+              <label>Place Name</label>
+              <input type="text" id="placeName" placeholder="e.g. Modibbo Adama University" />
+            </div>
+            <div class="form-group">
+              <label>Description</label>
+              <textarea id="placeDesc" placeholder="Short description..."></textarea>
+            </div>
+            <div class="form-group">
+              <label>Type</label>
+              <select id="placeType">
+                <option value="restaurant">Restaurant / Food</option>
+                <option value="housing">Housing</option>
+                <option value="education">Education</option>
+                <option value="danger">Danger Zone</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group half">
+                <label>Latitude</label>
+                <input type="number" id="placeLat" placeholder="9.2035" step="0.0001" />
+              </div>
+              <div class="form-group half">
+                <label>Longitude</label>
+                <input type="number" id="placeLng" placeholder="12.4954" step="0.0001" />
+              </div>
+            </div>
+            <button class="btn btn-primary" id="savePlaceBtn"><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4.2h11l3 3v12.6H5z"/><rect x="8" y="4.2" width="7" height="4.6"/><rect x="8" y="13.6" width="8" height="6"/></svg> Save Place</button>
+          </div>
+        </div>
+        <div id="placesList" class="list-container"></div>
+      </section>
+
+      <!-- COURSES PAGE -->
+      <section class="page" id="page-courses">
+        <div class="page-header">
+          <h2><svg class="icon icon-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.2c-2-1.3-5-1.5-8-.7v12.7c3-.8 6-.6 8 .7 2-1.3 5-1.5 8-.7V5.5c-3-.8-6-.6-8 .7z"/><line x1="12" y1="6.2" x2="12" y2="18.9"/></svg> Study Resources</h2>
+          <p>Your academic materials, organized offline</p>
+        </div>
+        <div class="card form-card collapsible" id="addCourseSection">
+          <div class="collapsible-header" id="toggleAddCourse">
+            <span><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add Resource</span><span class="chevron"><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15.4 18 9"/></svg></span>
+          </div>
+          <div class="collapsible-body" id="addCourseBody" style="display:none">
+            <div class="form-group">
+              <label>Title</label>
+              <input type="text" id="courseTitle" placeholder="e.g. Engineering Mathematics Notes" />
+            </div>
+            <div class="form-group">
+              <label>File Path / Reference</label>
+              <input type="text" id="courseFile" placeholder="e.g. /sdcard/Documents/maths.pdf" />
+            </div>
+            <div class="form-group">
+              <label>Category</label>
+              <select id="courseCategory">
+                <option value="lecture">Lecture Notes</option>
+                <option value="past-paper">Past Questions</option>
+                <option value="textbook">Textbook</option>
+                <option value="assignment">Assignment</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <button class="btn btn-primary" id="saveCourseBtn"><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4.2h11l3 3v12.6H5z"/><rect x="8" y="4.2" width="7" height="4.6"/><rect x="8" y="13.6" width="8" height="6"/></svg> Save Resource</button>
+          </div>
+        </div>
+        <div id="coursesList" class="list-container"></div>
+      </section>
+
+      <!-- AGENDA PAGE -->
+      <section class="page" id="page-agenda">
+        <div class="page-header">
+          <h2><svg class="icon icon-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.2" y="5" width="17.6" height="15.8" rx="2"/><line x1="3.2" y1="9.8" x2="20.8" y2="9.8"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg> Agenda &amp; Tasks</h2>
+          <p>Manage your academic schedule</p>
+        </div>
+        <div class="card form-card collapsible">
+          <div class="collapsible-header" id="toggleAddTask">
+            <span><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add Task</span><span class="chevron"><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15.4 18 9"/></svg></span>
+          </div>
+          <div class="collapsible-body" id="addTaskBody" style="display:none">
+            <div class="form-group">
+              <label>Task Title</label>
+              <input type="text" id="taskTitle" placeholder="e.g. Submit Engineering Report" />
+            </div>
+            <div class="form-group">
+              <label>Date</label>
+              <input type="date" id="taskDate" />
+            </div>
+            <div class="form-group">
+              <label>Description</label>
+              <textarea id="taskDesc" placeholder="Optional details..."></textarea>
+            </div>
+            <button class="btn btn-primary" id="saveTaskBtn"><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4.2h11l3 3v12.6H5z"/><rect x="8" y="4.2" width="7" height="4.6"/><rect x="8" y="13.6" width="8" height="6"/></svg> Add Task</button>
+          </div>
+        </div>
+        <div id="taskList" class="list-container"></div>
+      </section>
+
+      <!-- CONTACTS PAGE -->
+      <section class="page" id="page-contacts">
+        <div class="page-header">
+          <h2><svg class="icon icon-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3h3l1.8 4.6-2.3 1.6a12.4 12.4 0 006.7 6.7l1.6-2.3L22 15.4v3c0 1.1-.9 2-2 2C11.6 20.4 3.6 12.4 3.6 4.9c0-1.1.9-2 2-2z"/></svg> Contact Directory</h2>
+          <p>Your trusted people — one tap away</p>
+        </div>
+        <div class="card form-card collapsible">
+          <div class="collapsible-header" id="toggleAddContact">
+            <span><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add Contact</span><span class="chevron"><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15.4 18 9"/></svg></span>
+          </div>
+          <div class="collapsible-body" id="addContactBody" style="display:none">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" id="contactName" placeholder="e.g. Dr. Ibrahim Musa" />
+            </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" id="contactPhone" placeholder="e.g. 08098765432" />
+            </div>
+            <div class="form-group">
+              <label>Role / Relationship</label>
+              <select id="contactRole">
+                <option value="emergency">Emergency Contact</option>
+                <option value="lecturer">Lecturer</option>
+                <option value="friend">Friend / Classmate</option>
+                <option value="family">Family</option>
+                <option value="security">Campus Security</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <button class="btn btn-primary" id="saveContactBtn"><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4.2h11l3 3v12.6H5z"/><rect x="8" y="4.2" width="7" height="4.6"/><rect x="8" y="13.6" width="8" height="6"/></svg> Save Contact</button>
+          </div>
+        </div>
+        <div id="contactsList" class="list-container"></div>
+      </section>
+
+      <!-- TRAVEL SAFETY LOG PAGE -->
+      <section class="page" id="page-travel">
+        <div class="page-header">
+          <h2><svg class="icon icon-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="4.5" cy="19.5" r="1.6" fill="currentColor" stroke="none"/><circle cx="19.5" cy="4.5" r="1.6" fill="currentColor" stroke="none"/><path d="M4.5 19.5c0-6 3-9 7.5-9s7.5-3 7.5-6"/></svg> Travel Safety Log</h2>
+          <p>Record your routes and safety notes</p>
+        </div>
+        <div class="card form-card collapsible">
+          <div class="collapsible-header" id="toggleAddTravel">
+            <span><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Log a Journey</span><span class="chevron"><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15.4 18 9"/></svg></span>
+          </div>
+          <div class="collapsible-body" id="addTravelBody" style="display:none">
+            <div class="form-group">
+              <label>Departure Point</label>
+              <input type="text" id="travelFrom" placeholder="e.g. Campus Gate" />
+            </div>
+            <div class="form-group">
+              <label>Destination</label>
+              <input type="text" id="travelTo" placeholder="e.g. Jimeta Market" />
+            </div>
+            <div class="form-group">
+              <label>Safety Note</label>
+              <textarea id="travelNote" placeholder="e.g. Avoid this road at night — street lights off"></textarea>
+            </div>
+            <button class="btn btn-primary" id="saveTravelBtn"><svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4.2h11l3 3v12.6H5z"/><rect x="8" y="4.2" width="7" height="4.6"/><rect x="8" y="13.6" width="8" height="6"/></svg> Save Log</button>
+          </div>
+        </div>
+        <div id="travelList" class="list-container"></div>
+      </section>
+
+    </main>
+
+    <!-- BOTTOM NAV -->
+    <nav class="bottom-nav">
+      <a class="bottom-nav-item active" data-page="home">
+        <span><svg class="icon icon-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11.2L12 4l8 7.2M6 10v9.5h5V14h2v5.5h5V10"/></svg></span><label>Home</label>
+      </a>
+      <a class="bottom-nav-item" data-page="sos">
+        <span class="sos-nav-icon"><svg class="icon icon-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4.2l9 15.6H3z"/><line x1="12" y1="10" x2="12" y2="14.2"/><circle cx="12" cy="16.9" r="0.15" fill="currentColor" stroke="currentColor" stroke-width="1.6"/></svg></span><label>SOS</label>
+      </a>
+      <a class="bottom-nav-item" data-page="places">
+        <span><svg class="icon icon-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.5s7-7.4 7-12.3a7 7 0 10-14 0c0 4.9 7 12.3 7 12.3z"/><circle cx="12" cy="9.2" r="2.4"/></svg></span><label>Places</label>
+      </a>
+      <a class="bottom-nav-item" data-page="agenda">
+        <span><svg class="icon icon-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.2" y="5" width="17.6" height="15.8" rx="2"/><line x1="3.2" y1="9.8" x2="20.8" y2="9.8"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg></span><label>Agenda</label>
+      </a>
+      <a class="bottom-nav-item" data-page="contacts">
+        <span><svg class="icon icon-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3h3l1.8 4.6-2.3 1.6a12.4 12.4 0 006.7 6.7l1.6-2.3L22 15.4v3c0 1.1-.9 2-2 2C11.6 20.4 3.6 12.4 3.6 4.9c0-1.1.9-2 2-2z"/></svg></span><label>Contacts</label>
+      </a>
+    </nav>
+
+  </div><!-- end #app -->
+
+  <!-- GLOBAL TOAST -->
+  <div class="global-toast" id="globalToast"></div>
+
+  <!-- CORDOVA + SCRIPTS -->
+  <script src="cordova.js"></script>
+  <script src="js/icons.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/index.js"></script>
+
+</body>
+</html>

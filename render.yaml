@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: cam-student-hub
+    runtime: static
+    staticPublishPath: .
+    buildCommand: ""
